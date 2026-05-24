@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hookvale Games — Logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        oklch(0.98 0.006 80);
+    --bg-elev:   oklch(0.965 0.008 80);
+    --ink:       oklch(0.18 0.01 60);
+    --ink-soft:  oklch(0.42 0.01 60);
+    --ink-mute:  oklch(0.60 0.008 60);
+    --line:      oklch(0.90 0.006 80);
+    --line-soft: oklch(0.93 0.005 80);
+    --accent:    oklch(0.66 0.16 38);
+    --accent-ink:oklch(0.99 0.01 80);
+    --dark:      oklch(0.16 0.01 60);
+    --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "Geist Mono", ui-monospace, monospace;
+    --font-serif:"Instrument Serif", "Times New Roman", serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv11";
+  }
+  svg { display: block; }
+
+  .page {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 80px 48px 120px;
+  }
+  @media (max-width: 720px) { .page { padding: 56px 24px 80px; } }
+
+  /* ---------- Header ---------- */
+  .doc-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 64px;
+  }
+  .doc-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin: 0 0 14px;
+  }
+  .doc-title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.02;
+    margin: 0;
+  }
+  .doc-title em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .doc-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-align: right;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  .doc-meta b { color: var(--ink); font-weight: 500; }
+
+  /* ---------- Section frame ---------- */
+  .sec {
+    margin-bottom: 72px;
+  }
+  .sec__head {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: baseline;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line-soft);
+    margin-bottom: 32px;
+  }
+  .sec__idx {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+  }
+  .sec__title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .sec__title small {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0;
+    margin-left: 12px;
+  }
+
+  /* ---------- Cards ---------- */
+  .card {
+    border: 1px solid var(--line);
+    background: var(--bg-elev);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .card__stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 56px 32px;
+    min-height: 220px;
+    position: relative;
+  }
+  .card__caption {
+    border-top: 1px solid var(--line);
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+    background: var(--bg);
+  }
+  .card__caption b {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0;
+    font-family: var(--font-sans);
+    font-size: 13px;
+  }
+  .card--dark { background: var(--dark); border-color: var(--dark); }
+  .card--dark .card__caption { background: oklch(0.20 0.01 60); border-color: oklch(0.24 0.01 60); color: oklch(0.55 0.01 80); }
+  .card--dark .card__caption b { color: oklch(0.96 0.006 80); }
+  .card--accent .card__stage { background: var(--accent); }
+  .card--grid .card__stage {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--ink) 8%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--ink) 8%, transparent) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* ---------- Primary lockup hero ---------- */
+  .hero-lockup {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 100px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-elev);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-lockup::before,
+  .hero-lockup::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .hero-lockup::before {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 1px);
+    background-size: 80px 100%;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+  .hero-tag {
+    position: absolute;
+    bottom: 18px;
+    right: 22px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+  }
+  .hero-tag .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-right: 6px; vertical-align: middle; }
+
+  /* ---------- Lockup primitives ---------- */
+  /* The hook mark — drawn at 100×100, scaled by size token */
+  .mark {
+    width: var(--m, 40px);
+    height: var(--m, 40px);
+    color: currentColor;
+  }
+  .wordmark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    font-size: var(--w, 32px);
+    line-height: 1;
+  }
+  .wordmark em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  /* Horizontal lockup */
+  .lockup-h {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--m, 40px) * 0.36);
+  }
+  .lockup-h .wordmark { color: var(--ink); }
+
+  /* Stacked lockup */
+  .lockup-v {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--m, 60px) * 0.22);
+  }
+  .lockup-v .wordmark { letter-spacing: -0.04em; }
+  .lockup-v .lockup-v__sub {
+    font-family: var(--font-mono);
+    font-size: calc(var(--w, 28px) * 0.36);
+    letter-spacing: 0.32em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    padding-top: 4px;
+    border-top: 1px solid var(--line);
+    align-self: stretch;
+    text-align: center;
+  }
+
+  /* Inline mark + serif lockup */
+  .lockup-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--w, 44px);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.22em;
+  }
+
+  /* Monogram tile */
+  .monogram {
+    width: var(--s, 160px);
+    height: var(--s, 160px);
+    border-radius: calc(var(--s, 160px) * 0.22);
+    background: var(--ink);
+    color: var(--bg);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .monogram .mark { color: var(--accent); }
+  .monogram--accent { background: var(--accent); }
+  .monogram--accent .mark { color: var(--accent-ink); }
+  .monogram--light { background: var(--bg); color: var(--ink); border: 1px solid var(--line); }
+  .monogram--light .mark { color: var(--ink); }
+
+  /* ---------- Grids ---------- */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 900px) {
+    .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Construction ---------- */
+  .construction {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  @media (max-width: 780px) { .construction { grid-template-columns: 1fr; } }
+  .construction__stage {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+  }
+  .construction__notes {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .note {
+    border-left: 2px solid var(--accent);
+    padding: 4px 0 4px 18px;
+  }
+  .note h4 {
+    margin: 0 0 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .note p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  /* ---------- Scale row ---------- */
+  .scale-row {
+    border: 1px solid var(--line);
+    background: var(--bg-elev);
+    border-radius: 6px;
+    padding: 56px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    overflow-x: auto;
+  }
+  .scale-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .scale-cell .scale-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Misuse ---------- */
+  .donts .card__stage { position: relative; }
+  .donts .x {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: oklch(0.55 0.18 25);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ---------- Footer ---------- */
+  .doc-foot {
+    margin-top: 80px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body data-screen-label="Logo Specimen">
+
+<div class="page">
+
+  <!-- ============ DOC HEADER ============ -->
+  <header class="doc-head">
+    <div>
+      <p class="doc-eyebrow">Brand · Logo specimen · v1</p>
+      <h1 class="doc-title">The hook,<br>and how it's <em>worn</em>.</h1>
+    </div>
+    <div class="doc-meta">
+      <div><b>Hookvale Games</b></div>
+      <div>May 24, 2026</div>
+      <div>Internal · For review</div>
+    </div>
+  </header>
+
+  <!-- ============ PRIMARY ============ -->
+  <section class="sec">
+    <div class="sec__head">
+      <div class="sec__idx">01 — Primary</div>
+      <h2 class="sec__title">Horizontal lockup <small>The default. Use this everywhere it fits.</small></h2>
+    </div>
+
+    <div class="hero-lockup">
+      <div class="lockup-h" style="--m: 56px; --w: 52px;">
+        <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="wordmark">Hookvale Games</span>
+      </div>
+      <div class="hero-tag"><span class="dot"></span>PRIMARY · ON LIGHT</div>
+    </div>
+  </section>
+
+  <!-- ============ CONSTRUCTION ============ -->
+  <section class="sec">
+    <div class="sec__head">
+      <div class="sec__idx">02 — Construction</div>
+      <h2 class="sec__title">The mark <small>One stroke, one bead. A J that holds.</small></h2>
+    </div>
+
+    <div class="construction">
+      <div class="construction__stage">
+        <svg viewBox="0 0 200 200" width="100%" style="max-width: 320px;" aria-hidden="true">
+          <!-- grid -->
+          <defs>
+            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="oklch(0.18 0.01 60)" stroke-opacity="0.08" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="200" height="200" fill="url(#grid)"/>
+          <!-- safe area -->
+          <rect x="20" y="20" width="160" height="160" fill="none" stroke="oklch(0.18 0.01 60)" stroke-opacity="0.18" stroke-width="0.6" stroke-dasharray="2 3"/>
+          <!-- center axis -->
+          <line x1="100" y1="20" x2="100" y2="180" stroke="oklch(0.66 0.16 38)" stroke-opacity="0.25" stroke-width="0.6"/>
+          <!-- circle guides -->
+          <circle cx="100" cy="116" r="44" fill="none" stroke="oklch(0.66 0.16 38)" stroke-opacity="0.25" stroke-width="0.6"/>
+          <circle cx="140" cy="40" r="13" fill="none" stroke="oklch(0.66 0.16 38)" stroke-opacity="0.25" stroke-width="0.6"/>
+
+          <!-- the mark -->
+          <g transform="translate(50 30) scale(1)">
+            <path d="M90 10 V70 a30 30 0 0 1 -30 30 a30 30 0 0 1 -30 -30"
+              fill="none"
+              stroke="oklch(0.18 0.01 60)"
+              stroke-width="9"
+              stroke-linecap="round"
+              stroke-linejoin="round"/>
+            <circle cx="90" cy="10" r="9.5" fill="oklch(0.66 0.16 38)"/>
+          </g>
+
+          <!-- measurement ticks -->
+          <g font-family="Geist Mono, monospace" font-size="6" fill="oklch(0.60 0.008 60)">
+            <text x="184" y="44">x</text>
+            <text x="184" y="118">3x</text>
+            <text x="98" y="14" text-anchor="end">·</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="construction__notes">
+        <div class="note">
+          <h4>Two pieces</h4>
+          <p>A single round-capped stroke shaped like a J — the shank, the bend, the foot — plus a coral bead at the head. That's it. The bead is the only color in the mark; everything else carries the ink.</p>
+        </div>
+        <div class="note">
+          <h4>Proportions</h4>
+          <p>The bead diameter is one unit (1x). The bowl of the hook is three units across (3x). Stroke weight is roughly the bead radius. These ratios hold at every size — we don't redraw, we just scale.</p>
+        </div>
+        <div class="note">
+          <h4>Reading</h4>
+          <p>Reads as a hook, a J, a quiet question. Up close it's a fishing hook; at a glance it's the initial of a word that doesn't need finishing.</p>
+        </div>
+        <div class="note">
+          <h4>Clear space</h4>
+          <p>Hold a margin equal to the bead diameter on all sides. The mark needs room to breathe — anything tighter and the bead starts to feel like punctuation belonging to whatever's next to it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOCKUPS ============ -->
+  <section class="sec">
+    <div class="sec__head">
+      <div class="sec__idx">03 — Lockups</div>
+      <h2 class="sec__title">Six ways to wear it <small>One mark, several voices. Pick by context.</small></h2>
+    </div>
+
+    <div class="grid-2">
+
+      <!-- 1. Horizontal sans -->
+      <div class="card">
+        <div class="card__stage">
+          <div class="lockup-h" style="--m: 38px; --w: 30px;">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="wordmark">Hookvale Games</span>
+          </div>
+        </div>
+        <div class="card__caption"><b>Horizontal · Sans</b><span>PRIMARY</span></div>
+      </div>
+
+      <!-- 2. Stacked -->
+      <div class="card">
+        <div class="card__stage">
+          <div class="lockup-v" style="--m: 68px; --w: 34px;">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent);" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="wordmark">Hookvale</span>
+            <span class="lockup-v__sub">Games · Est. 2026</span>
+          </div>
+        </div>
+        <div class="card__caption"><b>Stacked · With tagline</b><span>STAMP / PROFILE</span></div>
+      </div>
+
+      <!-- 3. Serif voice -->
+      <div class="card">
+        <div class="card__stage">
+          <div class="lockup-serif" style="--w: 46px;">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent); width: 0.78em; height: 0.78em;" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>Hookvale</span>
+          </div>
+        </div>
+        <div class="card__caption"><b>Editorial · Serif</b><span>LONG-FORM / PRESS</span></div>
+      </div>
+
+      <!-- 4. Wordmark only -->
+      <div class="card">
+        <div class="card__stage">
+          <span class="wordmark" style="--w: 44px;">Hookvale<span style="color: var(--accent);">.</span></span>
+        </div>
+        <div class="card__caption"><b>Wordmark only</b><span>WHEN THE MARK IS IMPLIED</span></div>
+      </div>
+
+      <!-- 5. Inverted dark -->
+      <div class="card card--dark">
+        <div class="card__stage">
+          <div class="lockup-h" style="--m: 38px; --w: 30px; color: oklch(0.96 0.006 80);">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: oklch(0.74 0.16 40);" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="wordmark" style="color: oklch(0.96 0.006 80);">Hookvale Games</span>
+          </div>
+        </div>
+        <div class="card__caption"><b>Inverted · Dark</b><span>NIGHT / SPLASH</span></div>
+      </div>
+
+      <!-- 6. All-accent -->
+      <div class="card card--accent">
+        <div class="card__stage">
+          <div class="lockup-h" style="--m: 38px; --w: 30px; color: var(--accent-ink);">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-ink);" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+            </svg>
+            <span class="wordmark">Hookvale Games</span>
+          </div>
+        </div>
+        <div class="card__caption"><b>Single-tone · Coral</b><span>ONE-COLOR PRINT</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ MONOGRAM / APP ============ -->
+  <section class="sec">
+    <div class="sec__head">
+      <div class="sec__idx">04 — App icon</div>
+      <h2 class="sec__title">Monogram tiles <small>When the wordmark won't fit. Avatars, app icons, favicons.</small></h2>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <div class="card__stage">
+          <div class="monogram" style="--s: 168px;">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="--m: 88px;" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="8.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card__caption"><b>Ink tile</b><span>DEFAULT APP ICON</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card__stage">
+          <div class="monogram monogram--accent" style="--s: 168px;">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="--m: 88px;" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="8.5" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card__caption"><b>Coral tile</b><span>MARKETING / SOCIAL</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card__stage">
+          <div class="monogram monogram--light" style="--s: 168px;">
+            <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="--m: 88px; color: var(--ink);" aria-hidden="true">
+              <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+              <circle cx="70" cy="14" r="8.5" fill="var(--accent)" stroke="none"/>
+            </svg>
+          </div>
+        </div>
+        <div class="card__caption"><b>Paper tile</b><span>LIGHT MODE / FAVICON</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SCALE ============ -->
+  <section class="sec">
+    <div class="sec__head">
+      <div class="sec__idx">05 — Scale</div>
+      <h2 class="sec__title">From favicon to billboard <small>The mark holds from 16px up.</small></h2>
+    </div>
+
+    <div class="scale-row">
+      <div class="scale-cell">
+        <svg viewBox="0 0 100 100" width="16" height="16" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="9" fill="var(--accent)" stroke="none"/>
+        </svg>
+        <span class="scale-label">16px</span>
+      </div>
+      <div class="scale-cell">
+        <svg viewBox="0 0 100 100" width="24" height="24" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="8" fill="var(--accent)" stroke="none"/>
+        </svg>
+        <span class="scale-label">24px</span>
+      </div>
+      <div class="scale-cell">
+        <svg viewBox="0 0 100 100" width="40" height="40" fill="none" stroke="currentColor" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="7.5" fill="var(--accent)" stroke="none"/>
+        </svg>
+        <span class="scale-label">40px</span>
+      </div>
+      <div class="scale-cell">
+        <svg viewBox="0 0 100 100" width="72" height="72" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="7" fill="var(--accent)" stroke="none"/>
+        </svg>
+        <span class="scale-label">72px</span>
+      </div>
+      <div class="scale-cell">
+        <svg viewBox="0 0 100 100" width="120" height="120" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="7" fill="var(--accent)" stroke="none"/>
+        </svg>
+        <span class="scale-label">120px</span>
+      </div>
+      <div class="scale-cell">
+        <svg viewBox="0 0 100 100" width="180" height="180" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+          <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+          <circle cx="70" cy="14" r="6.5" fill="var(--accent)" stroke="none"/>
+        </svg>
+        <span class="scale-label">180px</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLORWAYS ============ -->
+  <section class="sec">
+    <div class="sec__head">
+      <div class="sec__idx">06 — Color</div>
+      <h2 class="sec__title">Colorways <small>Coral leads. Mono backs it up.</small></h2>
+    </div>
+
+    <div class="grid-4">
+      <div class="card">
+        <div class="card__stage">
+          <svg viewBox="0 0 100 100" width="84" height="84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="var(--accent)" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Two-tone</b><span>INK + CORAL</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card__stage">
+          <svg viewBox="0 0 100 100" width="84" height="84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Mono · Ink</b><span>BLACK PRINT</span></div>
+      </div>
+
+      <div class="card card--dark">
+        <div class="card__stage">
+          <svg viewBox="0 0 100 100" width="84" height="84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: oklch(0.96 0.006 80);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Mono · Paper</b><span>WHITE ON DARK</span></div>
+      </div>
+
+      <div class="card card--accent">
+        <div class="card__stage">
+          <svg viewBox="0 0 100 100" width="84" height="84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-ink);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Knockout</b><span>ON CORAL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DON'TS ============ -->
+  <section class="sec donts">
+    <div class="sec__head">
+      <div class="sec__idx">07 — Don't</div>
+      <h2 class="sec__title">A few things not to do <small>Mostly: leave it alone.</small></h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <div class="card__stage">
+          <span class="x">×</span>
+          <svg viewBox="0 0 100 100" width="84" height="84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink); transform: rotate(35deg);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="var(--accent)" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Don't rotate</b><span>THE HOOK HANGS</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card__stage">
+          <span class="x">×</span>
+          <svg viewBox="0 0 100 100" width="120" height="60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ink);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="var(--accent)" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Don't stretch</b><span>SCALE UNIFORMLY</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card__stage" style="background: oklch(0.75 0.18 145);">
+          <span class="x">×</span>
+          <svg viewBox="0 0 100 100" width="84" height="84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="color: oklch(0.55 0.18 25);" aria-hidden="true">
+            <path d="M70 14 V58 a22 22 0 0 1 -22 22 a22 22 0 0 1 -22 -22"/>
+            <circle cx="70" cy="14" r="7" fill="oklch(0.75 0.20 90)" stroke="none"/>
+          </svg>
+        </div>
+        <div class="card__caption"><b>Don't recolor</b><span>STAY IN PALETTE</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="doc-foot">
+    <div>HOOKVALE GAMES · LOGO SPECIMEN · v1.0</div>
+    <div>END OF DOCUMENT</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
